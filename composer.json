@@ -1,5 +1,5 @@
 {
-    "name": "yk/buried_log",
+    "name": "ybscript/swoole-buried",
     "version": "1.0.0",
     "description": "a buried record php framework",
     "type": "project",
