@@ -1,0 +1,38 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: yk
+ * Date: 19-4-3
+ * Time: 上午11:05
+ */
+
+try{
+
+    defined('YB_ENV') or define('YB_ENV', getenv('RUN_TIME') ?: 'onl');
+
+    include( __DIR__ . '/vendor/autoload.php' );
+
+    $serverType = getopt('t:')['t'] ?? '';
+
+    $srvConfig = require( __DIR__ . '/config/srvConfig.php' );
+
+    switch (strtolower($serverType)) {
+        case 'tcp':
+            $server = new \buried\servers\TcpServer($srvConfig['tcp']);
+            break;
+        case 'udp':
+            $server = new \buried\servers\UdpServer($srvConfig['udp']);
+            break;
+        default:
+            throw new Exception('server config not found');
+            break;
+    }
+
+    if($server) {
+        $server->run();
+    }
+}catch (\Exception $exception) {
+    $outException = sprintf("\e[38;5;1m%s\e[0m\n", $exception->getMessage());
+    fwrite(STDOUT, $outException);
+}

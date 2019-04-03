@@ -1,0 +1,29 @@
+{
+    "name": "yk/buried_log",
+    "version": "1.0.0",
+    "description": "a buried record php framework",
+    "type": "project",
+    "require": {
+        "php": ">=7.0",
+        "illuminate/database": "~5.8.0",
+        "yb98k/yb-buried": "^1.0.4",
+        "symfony/cache": "^4.3@dev"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "yuankui",
+            "email": "yk98k@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "buried\\": "app/",
+            "common\\": "common/"
+        },
+        "files": [
+            "common/function.php"
+        ]
+    }
+}
