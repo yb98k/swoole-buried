@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: yk
+ * Date: 19-4-3
+ * Time: 下午6:17
+ */
+
+$runtime = __DIR__ . '/runtime';
+if(!is_dir($runtime)) {
+    mkdir($runtime, 0777, true);
+}
+
+$cache = __DIR__ . '/runtime/cache';
+if(!is_dir($cache)) {
+    mkdir($cache, 0777, true);
+}
