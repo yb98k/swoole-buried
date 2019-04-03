@@ -1,0 +1,2 @@
+# swoole-buried
+一个使用swoole的tcp、udp搭建的可以同步或异步进行的服务器埋点记录日志等操作的框架
