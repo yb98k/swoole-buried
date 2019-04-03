@@ -1,4 +1,4 @@
 /vendor
-cache/
-.log
-.composer.lock
+*.log
+composer.lock
+cache/*
