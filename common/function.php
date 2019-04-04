@@ -45,3 +45,22 @@ if(!function_exists('getIPAddress')) {
         return $ipAddress;
     }
 }
+
+/**
+ * 格式化Model类名称
+ */
+if(!function_exists('formatModelClass')) {
+    function formatModelClass($name)
+    {
+        if(strpos($name, '_') === false) {
+            return ucfirst($name) . 'Model';
+        } else {
+            $names = explode('_', $name);
+            $names = array_map(function ($name) {
+                return ucfirst($name);
+            }, $names);
+
+            return implode('', $names) . 'Model';
+        }
+    }
+}

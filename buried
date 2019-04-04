@@ -10,8 +10,10 @@
 try{
 
     defined('YB_ENV') or define('YB_ENV', getenv('RUN_TIME') ?: 'onl');
+    defined('YB_PATH') or define('YB_PATH', __DIR__ . '/app');
 
     include( __DIR__ . '/vendor/autoload.php' );
+    include( __DIR__ . '/command/model.php' );
 
     $serverType = getopt('t:')['t'] ?? '';
 

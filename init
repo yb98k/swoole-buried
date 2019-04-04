@@ -16,3 +16,5 @@ $cache = __DIR__ . '/runtime/cache';
 if(!is_dir($cache)) {
     mkdir($cache, 0777, true);
 }
+
+shell_exec('rm -f ' . __DIR__ . '/init');
