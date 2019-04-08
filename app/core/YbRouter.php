@@ -63,16 +63,35 @@ class YbRouter
 
             $routeInfo = explode('/', $action);
 
-            $action = 'on' . ucfirst(array_pop($routeInfo));
+            $action = 'on' . self::formatCA(array_pop($routeInfo));
             $controller = array_pop($routeInfo);
             $namespace = count($routeInfo) > 0 ? implode('\\', $routeInfo) . '\\' : '';
 
-            $controllerRoute = 'buried\controllers\\' . $namespace . ucfirst($controller) . 'Controller';
+            $controllerRoute = 'buried\controllers\\' . $namespace . self::formatCA($controller) . 'Controller';
 
             return [
                 'controller' => $controllerRoute,
                 'action'     => $action
             ];
         }
+    }
+
+    /**
+     * 格式化动作或控制器命名
+     * @param $name
+     * @return string
+     */
+    public static function formatCA($name)
+    {
+        if(strpos($name, '-') !== false) {
+            $info = explode('-', $name);
+            $info = array_map(function ($item) {
+                return ucfirst($item);
+            }, $info);
+
+            return implode('', $info);
+        }
+
+        return ucfirst($name);
     }
 }
