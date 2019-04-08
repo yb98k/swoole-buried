@@ -80,4 +80,10 @@ class HomeController
 $ php buried --table xxx 
 ```
 
+[4] hot reload server:
+```
+$ cd swoole-buried
+$ sh tcp_reload.sh
+$ sh udp_reload.sh
+```
 
