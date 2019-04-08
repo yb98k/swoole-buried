@@ -56,8 +56,10 @@ class TcpServer extends AbstractServer
             $server->send($fd, 1);
         } else {
             $result = $server->taskwait(json_encode($data));
+            
+            $result = is_string($result) ? $result : json_encode($result);
 
-            $server->send($fd, !$result ? 0 : 1);
+            $server->send($fd, !$result ? 0 : $result);
         }
     }
 
