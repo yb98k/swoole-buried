@@ -47,8 +47,10 @@ class UdpServer extends AbstractServer
             $server->sendto($clientInfo['address'], $clientInfo['port'], 1);
         } else {
             $result = $server->taskwait(json_encode($data));
+            
+            $result = is_string($result) ? $result : json_encode($result);
 
-            $server->sendto($clientInfo['address'], $clientInfo['port'], !$result ? 0 : 1);
+            $server->sendto($clientInfo['address'], $clientInfo['port'], !$result ? 0 : $result);
         }
     }
 
